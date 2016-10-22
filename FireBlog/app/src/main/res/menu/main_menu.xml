@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.aakash.fireblog.MainActivity"
+    >
     <item android:id="@+id/action_add"
         android:title="Add Post"
-        android:icon="@mipmap/ic_note_add_white_24dp"
+        android:icon="@mipmap/ic_note_add_black_24dp"
         app:showAsAction="always"
         />
     <item android:id="@+id/action_settings"

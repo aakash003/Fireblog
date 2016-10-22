@@ -1,78 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_post"
+    android:id="@+id/activity_main"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.aakash.fireblog.PostActivity"
-    android:orientation="horizontal">
+    tools:context="com.example.aakash.fireblog.MainActivity">
 
-    <ImageButton
+
+    <include
+        layout="@layout/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/add_btn"
-        android:id="@+id/imageSelect"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:adjustViewBounds="true"
-        android:background="#00ffffff"
-        android:scaleType="centerCrop" />
-
-    <EditText
+        android:id="@+id/toolbar"/>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_post"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/titleField"
-        android:background="@drawable/input_outline"
-        android:layout_below="@+id/imageSelect"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:paddingStart="5dp"
-        android:paddingTop="5dp"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
-        android:paddingEnd="5dp"
-        android:paddingBottom="5dp"
-        android:padding="5dp"
-        android:hint="Post Title..."
-        android:textColorHint="@color/grayColor"/>
+        android:layout_height="match_parent"
+        android:background="#fff"
+        tools:context="com.example.aakash.fireblog.PostActivity"
+        android:orientation="horizontal">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:layout_below="@+id/titleField"
-        android:id="@+id/descriptionField"
-        android:background="@drawable/input_outline"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:padding="20dp"
-        android:paddingBottom="5dp"
-        android:paddingEnd="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingStart="5dp"
-        android:paddingTop="5dp"
-        android:hint="Post Descripton..."
-        android:textColorHint="@color/grayColor" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/add_btn"
+            android:id="@+id/imageSelect"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:background="#00ffffff"
+            android:scaleType="centerCrop" />
 
-    <Button
-        android:text="POST"
-        android:textColor="#fff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/descriptionField"
-        android:layout_alignStart="@+id/descriptionField"
-        android:layout_marginBottom="16dp"
-        android:id="@+id/submitButton"
-        android:background="@color/colorPrimary"
-        android:layout_alignRight="@+id/descriptionField"
-        android:layout_alignEnd="@+id/descriptionField" />
-</RelativeLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleField"
+            android:background="@drawable/input_outline"
+            android:layout_below="@+id/imageSelect"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingStart="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="5dp"
+            android:padding="5dp"
+            android:hint="Post Title..."
+            android:textColorHint="@color/grayColor"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:layout_below="@+id/titleField"
+            android:id="@+id/descriptionField"
+            android:background="@drawable/input_outline"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="20dp"
+            android:paddingBottom="5dp"
+            android:paddingEnd="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingStart="5dp"
+            android:paddingTop="5dp"
+            android:hint="Post Descripton..."
+            android:textColorHint="@color/grayColor" />
+
+        <Button
+            android:text="POST"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/descriptionField"
+            android:layout_alignStart="@+id/descriptionField"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/submitButton"
+            android:background="@drawable/buttonshape"
+            android:layout_alignRight="@+id/descriptionField"
+            android:layout_alignEnd="@+id/descriptionField" />
+    </RelativeLayout>
+
+
+</LinearLayout>

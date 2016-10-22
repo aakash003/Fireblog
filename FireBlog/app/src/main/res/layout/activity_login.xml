@@ -2,85 +2,106 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_login"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fff"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context="com.example.aakash.fireblog.LoginActivity">
 
+
+    <TextView
+        android:text="Fireblog"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/appNameText"
+        android:textSize="36sp"
+        android:padding="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/appNameText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
         android:id="@+id/emailLoginField"
         android:hint="Email"
+        android:singleLine="true"
         android:padding="10dp"
-        android:background="@drawable/input_outline"
-        android:paddingBottom="16dp"
-        android:paddingEnd="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp" />
+        android:background="@drawable/input_outline" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/passwordLoginField"
+            android:hint="Password"
+            android:singleLine="true"
+            android:padding="10dp"
+            android:background="@drawable/input_outline"
+            />
+        <Button
+            android:text="LOGIN"
+            android:textColor="#000"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bLogin"
+            android:textSize="14sp"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_marginTop="5dip"
+            android:background="@drawable/buttonshape" />
+
+    </LinearLayout>
 
     <Button
-        android:text="Login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bLogin"
-        android:layout_below="@+id/passwordLoginField"
-        android:layout_marginTop="27dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:padding="10dp"
-        style="@android:style/Widget.Holo.Button" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_marginTop="30dp"
-        android:id="@+id/passwordLoginField"
-        android:hint="Password"
-        android:padding="10dp"
-        android:background="@drawable/input_outline"
-        android:layout_below="@+id/emailLoginField"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:paddingBottom="16dp"
-        android:paddingEnd="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp" />
-
-
-    <Button
-        android:text="Need a new Account"
-        android:layout_width="match_parent"
+        android:text="DON'T HAVE AN ACCOUNT? SIGNUP."
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btoRegister"
-        android:layout_below="@+id/bLogin"
-        android:layout_marginTop="27dp"
+        android:padding="20dp"
+        android:textSize="12sp"
+        style="@android:style/Widget.Holo.Button"
+        android:elevation="17dp"
+        android:textColor="#000"
+        android:background="@drawable/buttonshape"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:padding="10dp"
-        style="@android:style/Widget.Holo.Button" />
+        android:layout_alignParentStart="true" />
 
     <com.google.android.gms.common.SignInButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:id="@+id/googlebtn"
-        android:layout_below="@+id/btoRegister"
-        android:layout_marginTop="26dp">
-
+        android:background="#fff"
+        android:clickable="false"
+        android:layout_marginBottom="69dp"
+        android:layout_above="@+id/btoRegister"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content">
     </com.google.android.gms.common.SignInButton>
+
+    <TextView
+        android:text="Have a Google Account.."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:padding="5dp"
+
+        android:layout_above="@+id/googlebtn"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

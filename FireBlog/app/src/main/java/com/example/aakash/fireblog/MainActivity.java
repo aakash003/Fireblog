@@ -2,12 +2,16 @@ package com.example.aakash.fireblog;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +32,7 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ActionBarActivity {
 
     private RecyclerView mBlogList;
     private DatabaseReference mDatabaseRefer;
@@ -61,6 +65,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_main);
+
+
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
+
+
+        TextView appTitle=(TextView)findViewById(R.id.toolbar_title);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/x.ttf");
+        appTitle.setTypeface(custom_font);
+
+
         mDatabaseRefer= FirebaseDatabase.getInstance().getReference().child("Blog");
         mDatabaseRefer.keepSynced(true);
         mDatabaseUsers=FirebaseDatabase.getInstance().getReference().child("Users");
@@ -97,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.setImage(getApplicationContext(),model.getImage());
                 viewHolder.setUsername(model.getUsername());
 
-                viewHolder.setLikeBtn(post_key);
+                //viewHolder.setLikeBtn(post_key);
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -193,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
             mDatabaseLike.keepSynced(true);
 
         }
-        public void setLikeBtn(final String post_key)
+        /*public void setLikeBtn(final String post_key)
         {
             mDatabaseLike.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -209,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-        }
+        }*/
         public void setTitle(String title)
         {
             TextView post_title=(TextView)mView.findViewById(R.id.post_title);

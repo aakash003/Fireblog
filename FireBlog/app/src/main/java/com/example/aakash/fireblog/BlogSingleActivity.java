@@ -1,7 +1,11 @@
 package com.example.aakash.fireblog;
 
+import android.app.Activity;
+import android.graphics.Typeface;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -20,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-public class BlogSingleActivity extends AppCompatActivity {
+public class BlogSingleActivity extends ActionBarActivity {
 
     //private String mPost_key;
     private DatabaseReference mDatabase;
@@ -32,6 +36,8 @@ public class BlogSingleActivity extends AppCompatActivity {
     private String post_title;
     private String post_uid;
     private TextView mPostSingleTitle;
+    private TextView mPostSingleDesc;
+
 
 
     @Override
@@ -39,11 +45,15 @@ public class BlogSingleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog_single);
 
-        View includedLayout = findViewById(R.id.content_desc);
-        final TextView mPostSingleDesc = (TextView) includedLayout.findViewById(R.id.blog_desc_single);
-
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
+        TextView appTitle=(TextView)findViewById(R.id.toolbar_title);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/x.ttf");
+        appTitle.setTypeface(custom_font);
+        initCollapsingToolbar();
         mPostSingleTitle=(TextView)findViewById(R.id.blog_single_title);
-       // mPostSingleDesc=(TextView)findViewById(R.id.blog_desc_single);
+        mPostSingleDesc=(TextView)findViewById(R.id.blog_single_desc);
 
          String mPost_key=getIntent().getExtras().getString("blog_id");
 
@@ -56,13 +66,10 @@ public class BlogSingleActivity extends AppCompatActivity {
                 post_desc=(String) dataSnapshot.child("desc00").getValue();
                  post_image=(String) dataSnapshot.child("image").getValue();
 
-                //Toast.makeText(BlogSingleActivity.this,post_desc + post_image,Toast.LENGTH_LONG).show();
+                Toast.makeText(BlogSingleActivity.this,post_desc,Toast.LENGTH_LONG).show();
 
                 post_uid=(String) dataSnapshot.child("uid").getValue();
 
-
-
-                mPostSingleDesc.setText(post_desc);
 
 
                 try {
@@ -74,6 +81,7 @@ public class BlogSingleActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 mPostSingleTitle.setText(post_title);
+                mPostSingleDesc.setText(post_desc);
 
             }
 
@@ -82,18 +90,11 @@ public class BlogSingleActivity extends AppCompatActivity {
 
             }
         });
-  //      Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
-
-
-
-        //initCollapsingToolbar();
 
     }
     private void initCollapsingToolbar() {
         final CollapsingToolbarLayout collapsingToolbar =(CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(" ");
+        collapsingToolbar.setTitle(post_desc);
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
         appBarLayout.setExpanded(true);
 

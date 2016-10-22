@@ -2,6 +2,7 @@ package com.example.aakash.fireblog;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -36,6 +38,7 @@ import java.util.Set;
 public class LoginActivity extends AppCompatActivity {
 
 
+    private TextView appTitle;
     private EditText mLoginEmailField;
     private EditText mLoginPasswordField;
     private Button mLogin;
@@ -68,6 +71,9 @@ public class LoginActivity extends AppCompatActivity {
         mLoginEmailField = (EditText) findViewById(R.id.emailLoginField);
         mLoginPasswordField = (EditText) findViewById(R.id.passwordLoginField);
 
+        appTitle=(TextView)findViewById(R.id.appNameText);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/x.ttf");
+        appTitle.setTypeface(custom_font);
         mGoogle=(SignInButton)findViewById(R.id.googlebtn);
 
         mAuthstatelisten= new FirebaseAuth.AuthStateListener() {
@@ -200,7 +206,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkUserExist() {
-        if (mAuth.getCurrentUser() != null) {
+        if (mAuth.getCurrentUser()!= null) {
             final String user_id = mAuth.getCurrentUser().getUid();
             mDatabaseUsers.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -209,11 +215,15 @@ public class LoginActivity extends AppCompatActivity {
                         Intent loginIntent = new Intent(LoginActivity.this, MainActivity.class);
                         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(loginIntent);
+                        finish();
                     } else {
-                        Intent setUpIntent = new Intent(LoginActivity.this, SetUpActivity.class);
+                        Toast.makeText(getApplicationContext(),user_id,Toast.LENGTH_LONG).show();
+                        Intent setUpIntent = new Intent(LoginActivity.this, MainActivity.class);
                         setUpIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(setUpIntent);
+                        finish();
                     }
+
                 }
 
                 @Override

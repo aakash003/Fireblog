@@ -2,6 +2,7 @@ package com.example.aakash.fireblog;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +28,10 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mPassword;
     private Button bRegister;
 
+    private  Button bregtolog;
+
+
+    private TextView appTitle;
 
     private FirebaseAuth mAuth;
 
@@ -39,6 +45,16 @@ public class RegisterActivity extends AppCompatActivity {
 
         mProgress=new ProgressDialog(this);
 
+        bregtolog=(Button)findViewById(R.id.bRegToLog) ;
+        bregtolog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+            }
+        });
+        appTitle=(TextView)findViewById(R.id.textRegister);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/x.ttf");
+        appTitle.setTypeface(custom_font);
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Users");
 
         mAuth=FirebaseAuth.getInstance();
@@ -82,6 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
                         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mainIntent);
+                        finish();
                     }
                 }
             });
